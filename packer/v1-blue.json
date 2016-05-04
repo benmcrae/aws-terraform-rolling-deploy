@@ -1,0 +1,25 @@
+{
+  "variables": {
+    "ami_name": "v1-blue"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "eu-west-1",
+    "source_ami": "ami-f95ef58a",
+    "instance_type": "c3.large",
+    "associate_public_ip_address": true,
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `ami_name`}}.{{isotime \"20060102_1504\"}}",
+    "tags": {
+      "Name": "{{user `ami_name`}}"
+    }
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo apt-get update -y",
+      "sudo apt-get install -y nginx",
+      "echo '<body bgcolor=\"#00f\"><h1>V1-BLUE</h1></body>' | sudo tee /usr/share/nginx/html/index.html"
+    ]
+  }]
+}

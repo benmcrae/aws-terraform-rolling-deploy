@@ -1,0 +1,20 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "eu-west-1",
+    "vpc_id": "vpc-21e30944",
+    "subnet_id": "subnet-8807edff",
+    "source_ami": "ami-f95ef58a",
+    "instance_type": "t2.nano",
+    "ssh_username": "ubuntu",
+    "ami_name": "v2-green.{{timestamp}}"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo apt-get update -y",
+      "sudo apt-get install -y nginx",
+      "echo '<body bgcolor=\"#0f0\"><h1>V2-GREEN</h1></body>' | sudo tee /usr/share/nginx/html/index.html"
+    ]
+  }]
+}
