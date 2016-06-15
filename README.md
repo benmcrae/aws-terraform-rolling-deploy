@@ -16,7 +16,7 @@ We will build our AMIs using [Packer](https://www.packer.io/). Within the root d
 packer build packer/v1-blue.json
 ```
 
-Once the build has completed, the log output will print the created AMI identifier. *Be sure to keep a record for later use!*
+Once the build has complete, the log output will print the created AMI identifier. *Be sure to keep a record for later use!*
 
 ```
 ==> Builds finished. The artifacts of successful builds are:
